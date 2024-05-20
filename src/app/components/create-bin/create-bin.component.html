@@ -1,0 +1,50 @@
+<form
+  class="container mx-auto p-6 max-w-lg bg-white rounded-lg shadow-md"
+  [formGroup]="xForm"
+>
+  <h4 class="text-2xl font-bold text-center mb-5">Create Your Code Snippet</h4>
+  <div class="mb-4">
+    <input
+      type="text"
+      placeholder="Title"
+      [formControl]="title"
+      class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+    />
+    <h5
+      class="text-red-500 text-sm mt-2"
+      [hidden]="title.valid || title.untouched"
+    >
+      Title is required.
+    </h5>
+  </div>
+  <div class="mb-4">
+    <textarea
+      class="codearea w-full h-32 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+      placeholder="Code goes here"
+      [formControl]="code"
+    ></textarea>
+    <h5
+      class="text-red-500 text-sm mt-2"
+      [hidden]="code.valid || code.untouched"
+    >
+      Code is required.
+    </h5>
+  </div>
+  <div class="flex justify-between items-center">
+    <button
+      type="submit"
+      [disabled]="xForm.invalid"
+      (click)="addCode()"
+      class="bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed"
+    >
+      Save Code
+    </button>
+    <button
+      type="button"
+      (click)="reset()"
+      class="bg-gray-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-gray-600"
+    >
+      Reset
+    </button>
+  </div>
+</form>

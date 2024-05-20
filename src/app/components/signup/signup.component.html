@@ -1,0 +1,59 @@
+<form
+  class="container mx-auto p-6 max-w-md bg-white rounded-lg shadow-md"
+  #registerForm="ngForm"
+>
+  <h4 class="text-3xl font-bold text-center mb-5">SignUp</h4>
+  <div class="mb-4">
+    <input
+      type="email"
+      placeholder="Email Here"
+      required
+      pattern="^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$"
+      ngModel
+      #email="ngModel"
+      name="email"
+      class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+    />
+    <h5
+      class="text-red-500 text-sm mt-2"
+      [hidden]="email.valid || email.untouched"
+    >
+      Enter a valid Email
+    </h5>
+  </div>
+  <div class="mb-4">
+    <input
+      type="password"
+      placeholder="Password Here"
+      required
+      minlength="6"
+      ngModel
+      #password="ngModel"
+      name="password"
+      class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+    />
+    <h5
+      class="text-red-500 text-sm mt-2"
+      [hidden]="password.valid || password.untouched"
+    >
+      Enter a valid Password greater than 6 characters
+    </h5>
+  </div>
+  <div class="flex justify-between items-center">
+    <button
+      type="submit"
+      [disabled]="registerForm.invalid"
+      (click)="register(registerForm)"
+      class="bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed"
+    >
+      SignUp
+    </button>
+    <button
+      type="button"
+      (click)="reset(registerForm)"
+      class="bg-gray-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-gray-600"
+    >
+      Reset
+    </button>
+  </div>
+</form>

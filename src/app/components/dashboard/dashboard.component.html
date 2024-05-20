@@ -1,0 +1,39 @@
+<div class="container mx-auto p-6">
+  <h2 class="text-3xl font-bold text-center mb-5 text-blue-600">Dashboard</h2>
+
+  <div
+    class="inner-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+  >
+    <div
+      class="max-w-sm rounded overflow-hidden shadow-lg bg-white"
+      *ngFor="let snippet of response"
+      [ngStyle]="{
+        display: snippet.createdBy == auth.getUid() ? 'block' : 'none'
+      }"
+    >
+      <div class="bg-white shadow-md rounded-lg p-6 overflow-hidden relative">
+        <h5 class="text-2xl text-center font-bold mb-2">
+          {{ snippet?.title }}
+        </h5>
+        <pre
+          (click)="openCode(snippet.id)"
+          class="bg-gray-100 max-h-20 p-4 rounded-lg overflow-hidden text-sm mb-4 cursor-pointer"
+          >{{ snippet.code }}</pre
+        >
+        <button
+          class="bg-red-500 text-white font-semibold py-2 px-4 rounded hover:bg-red-600 absolute bottom-4 right-4"
+          (click)="deleteSnippet(snippet.id)"
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <button
+    (click)="navigateToCreate()"
+    class="bg-blue-500 text-white text-xl font-bold py-2 px-4 rounded-lg hover:bg-blue-600 fixed bottom-4 right-4"
+  >
+    +
+  </button>
+</div>

@@ -1,0 +1,56 @@
+<div class="bg-white p-4">
+  <nav class="flex items-center justify-between">
+    <h2 class="text-black text-2xl font-bold">
+      <a
+        routerLink="/"
+        class="text-blue-600 hover:text-blue-400 text-4xl"
+        routerLinkActive="text-black shadow-xl"
+        >CodeX</a
+      >
+    </h2>
+    <ul class="flex space-x-4">
+      <li>
+        <a
+          routerLink="/create"
+          routerLinkActive="text-green-800 shadow-xl"
+          class="text-green-600 hover:text-green-400 font-bold pr-3 text-3xl"
+          >Create</a
+        >
+      </li>
+      @if(this.auth.uid){
+      <li
+        class="text-red-500 cursor-pointer hover:text-red-400 font-bold pr-3 text-3xl"
+        (click)="logout()"
+      >
+        LogOut
+      </li>
+      } @else{
+      <li>
+        <a
+          routerLink="/login"
+          routerLinkActive="text-blue-800 shadow-xl"
+          class="text-blue-600 hover:text-blue-400 font-bold pr-3 text-3xl"
+          >Login</a
+        >
+      </li>
+      <li>
+        <a
+          routerLink="/signup"
+          routerLinkActive="text-blue-800 shadow-xl"
+          class="text-blue-600 hover:text-blue-400 font-bold pr-3 text-3xl"
+          >SignUp</a
+        >
+      </li>
+      }
+      <li>
+        <a
+          routerLink="/about"
+          routerLinkActive="text-black shadow-xl"
+          class="text-black hover:text-gray-400 font-bold text-3xl"
+          >About</a
+        >
+      </li>
+    </ul>
+  </nav>
+  <hr class="border-gray-700 mt-4" />
+</div>
